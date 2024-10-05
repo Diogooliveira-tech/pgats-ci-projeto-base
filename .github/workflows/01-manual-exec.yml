@@ -33,13 +33,9 @@ jobs:
       - name: Instalando dependências
         run: yarn
 
-      - name: Instalando Playwrigth
-        run: yarn playwrigth install   
+      - name: Instalando Playwright
+        run: yarn playwright install   
 
       - name: Teste E2E (end-to-end)
         run: yarn run e2e  
-
-
-
-
 
