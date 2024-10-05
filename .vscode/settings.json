@@ -1,3 +1,7 @@
 {
-  "cSpell.words": ["robo", "robocoasters"]
+  "cSpell.words": [
+    "robo",
+    "robocoasters"
+  ],
+  "terminal.integrated.shellIntegration.enabled": false
 }
