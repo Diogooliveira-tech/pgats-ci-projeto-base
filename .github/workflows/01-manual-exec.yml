@@ -3,12 +3,11 @@
 # nome que vai aparecer la nas opções de pipe
 name: 'Execução Manual'
 
-#  regras de disparo de execução (triggers/gatilhos)
-  # gatilho de exec manual = workflow_dispatch
+# regras de disparo de execução (triggers/gatilhos)
+# gatilho de exec manual = workflow_dispatch
 
 on:
    workflow_dispatch:
-
 
 jobs: 
 
