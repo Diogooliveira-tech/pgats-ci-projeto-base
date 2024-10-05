@@ -6,6 +6,7 @@ name: 'Execução Agendada'
 # regras de disparo de execução (triggers/gatilhos)
 # gatilho de exec manual = workflow_dispatch
 
+# faz agendamento por data e hora
 on:
    schedule:
     - cron: '0 8 * * 1'
