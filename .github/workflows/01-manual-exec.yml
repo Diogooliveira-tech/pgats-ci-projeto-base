@@ -15,7 +15,7 @@ jobs:
   e2e-tests:
 
     # maquina que job vai executar
-    runs-on: ['ubuntu-latest']
+    runs-on: ubuntu-latest
 
     # passo a passo das açoes do job
     steps:
@@ -39,8 +39,9 @@ jobs:
         run: yarn run e2e
 
       # disponibilizando relatorio (artefato)  
-      - uses: actions/upload-artifact@
-        if: ${{ ! cancelled() }}
+      # passed, failed, cancelled
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
         with:
-          name: relatorio de testes
+          name: relatorio-de-testes
           path: ./playwright-report
