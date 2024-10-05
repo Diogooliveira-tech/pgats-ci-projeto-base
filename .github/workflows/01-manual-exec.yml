@@ -36,5 +36,9 @@ jobs:
         run: yarn playwright install   
 
       - name: Teste E2E (end-to-end)
-        run: yarn run e2e  
-
+        run: yarn run e2e
+        
+      - uses: actions/upload-artifact@v4
+        with:
+          name: relatorio de testes
+          path: ./playwright-report
