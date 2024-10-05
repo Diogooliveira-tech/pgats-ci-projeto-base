@@ -37,8 +37,10 @@ jobs:
 
       - name: Teste E2E (end-to-end)
         run: yarn run e2e
-        
-      - uses: actions/upload-artifact@v4
+
+      # disponibilizando relatorio (artefato)  
+      - uses: actions/upload-artifact@
+        if: ${{ ! cancelled() }}
         with:
           name: relatorio de testes
           path: ./playwright-report
