@@ -1,0 +1,62 @@
+# CI de Nível 01 - Disparo dentro do fluxo de CI 
+
+# nome que vai aparecer la nas opções de pipe
+name: 'Execução Integrada'
+
+# regras de disparo de execução (triggers/gatilhos)
+# gatilho de exec manual = workflow_dispatch
+
+on:
+   workflow_dispatch:
+
+jobs:
+  inspection:
+  runs-on: ubuntu-latest
+
+steps:
+  - uses: actions/checkout@v4
+
+  - name: Instalando Yarn
+    run: npm install -g yarn
+
+  - name: Instalando dependências
+    run: yarn
+
+  - name: Padronizacao de codigo (Lint)
+    run: yarn lint
+
+
+  # descrição do job
+  e2e-tests:
+
+    # maquina que job vai executar
+    runs-on: ubuntu-latest
+
+    # passo a passo das açoes do job
+    steps:
+
+      - uses: actions/checkout@v4
+
+     # - uses: actions/setup-node@v4
+     #   with:
+     #     node-version: lts/*
+
+      - name: Instalando Yarn
+        run: npm install -g yarn
+
+      - name: Instalando dependências
+        run: yarn
+
+      - name: Instalando Playwright
+        run: yarn playwright install   
+
+      - name: Teste E2E (end-to-end)
+        run: yarn run e2e
+
+      # disponibilizando relatorio (artefato)  
+      # passed, failed, cancelled
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: relatorio-de-testes
+          path: ./playwright-report
