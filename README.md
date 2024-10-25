@@ -19,7 +19,7 @@
    ```shell
    yarn run test
    ```
-8. Abra o relatório de cobertura de código em `reports/coverage/lcov-report` 
+8. Abra o relatório de cobertura de código em `reports/coverage/lcov-report`
 9. Execute os testes de mutação com o Stryker
    ```shell
    yarn run test:mutation
@@ -33,4 +33,5 @@
 13. Acesse a aplicação publicada [neste link](https://pgats-ci-example.netlify.app)
 
 ---
+
 💜⚡️

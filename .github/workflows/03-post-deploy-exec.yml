@@ -7,16 +7,14 @@ name: 'Execução por Deploy'
 # gatilho de exec manual = workflow_dispatch
 
 on:
-   workflow_run:
+  workflow_run:
     workflows: ['Execução Manual']
-    types: 
+    types:
       - completed
 
-jobs: 
-
+jobs:
   # descrição do job
   e2e-tests:
-
     # maquina que job vai executar
     runs-on: ubuntu-latest
 
@@ -24,12 +22,11 @@ jobs:
 
     # passo a passo das açoes do job
     steps:
-
       - uses: actions/checkout@v4
 
-     # - uses: actions/setup-node@v4
-     #   with:
-     #     node-version: lts/*
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version: lts/*
 
       - name: Instalando Yarn
         run: npm install -g yarn
@@ -38,16 +35,15 @@ jobs:
         run: yarn
 
       - name: Instalando Playwright
-        run: yarn playwright install   
+        run: yarn playwright install
 
       - name: Teste E2E (end-to-end)
         run: yarn run e2e
 
-     # disponibilizando relatorio (artefato)  
-     # passed, failed, cancelled
+      # disponibilizando relatorio (artefato)
+      # passed, failed, cancelled
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: relatorio-de-testes
           path: ./playwright-report
-
