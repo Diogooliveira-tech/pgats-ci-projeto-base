@@ -45,7 +45,7 @@ jobs:
   e2e-tests:
     # maquina que job vai executar
     runs-on: ubuntu-latest
-    needs: [inspection]
+    needs: [unit]
 
     # passo a passo das açoes do job
     steps:
