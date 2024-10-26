@@ -67,7 +67,7 @@ jobs:
 
       - name: Teste E2E (end-to-end)
         run: yarn run e2e
-        env: 
+        env:
           URL: 'http://localhost:3000/'
 
       # disponibilizando relatorio (artefato)
