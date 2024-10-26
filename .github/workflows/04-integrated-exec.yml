@@ -13,20 +13,9 @@ jobs:
   inspection:
     runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Instalando Yarn
-        run: npm install -g yarn
-
-      - name: Instalando dependências
-        run: yarn
-
-      - name: Padronizacao de codigo (Lint)
-        run: yarn lint
-
   unit:
     runs-on: ubuntu-latest
+    needs: [inspection]
 
     steps:
       - uses: actions/checkout@v4
@@ -77,3 +66,7 @@ jobs:
         with:
           name: relatorio-de-testes
           path: ./playwright-report
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [e2e-tests]
